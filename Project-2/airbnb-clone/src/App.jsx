@@ -1,6 +1,7 @@
 import React from "react"
 import Navbar from "./components/Navbar"
 import Card from "./components/Card"
+import Data from "./data"
 
 import Hero from "./components/Hero"
 /*
@@ -9,18 +10,25 @@ Check the Figma file for the design specifics.
 */
 
 export default function App() {
+    const cards = Data.map(item => {
+      return (
+        <Card
+            key={item.id}
+            {...item}
+        />
+      )
+    })     
+
+
     return (
         <div>
             <Navbar />
-            {/* <Hero /> */}
-            <Card 
-                img="katie-zaferes.png"
-                rating="5.0"
-                reviewCount={6}
-                country="USA"
-                title="Life Lessons with Katie Zaferes"
-                price={136}
-            />
+            <Hero />
+            <section className="cards-list">
+              {cards}
+
+            </section>
         </div>
     )
+
 }
